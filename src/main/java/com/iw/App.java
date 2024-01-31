@@ -8,8 +8,7 @@ public final class App {
     public static void main(final String[] args) {
         Javalin.create()
                 .get("/", ctx -> ctx.html(content()))
-                .get("/404", ctx -> ctx.status(404))
-                .get("/502", ctx -> ctx.status(502))
+                .error(404, ctx -> ctx.result("Generic 404 message"))
                 .start(8080);
     }
 
