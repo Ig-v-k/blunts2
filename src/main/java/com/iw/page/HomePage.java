@@ -52,7 +52,7 @@ public final class HomePage implements Page {
                         a("@Ig-v-k").withHref("https://github.com/Ig-v-k"),
                         ", 2024"
                 )),
-                nav(ul(li(a("GitHub").withHref("https://github.com/Ig-v-k/blunts2"))))
+                nav(a("GitHub").withHref("https://github.com/Ig-v-k/blunts2"))
         );
     }
 

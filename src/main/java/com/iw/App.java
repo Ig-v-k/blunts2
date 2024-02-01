@@ -6,7 +6,6 @@ import io.javalin.http.staticfiles.Location;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 public final class App {
     public static void main(final String[] args) {
