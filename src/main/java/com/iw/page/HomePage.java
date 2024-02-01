@@ -17,7 +17,10 @@ public final class HomePage implements Page {
     @Override
     public String content() {
         return html(
-                head(title("Blunts2")),
+                head(
+                        title("Blunts2"),
+                        link().withRel("stylesheet").withHref("css/simple.min.css")
+                ),
                 body(
                         main(
                                 section(
@@ -31,7 +34,7 @@ public final class HomePage implements Page {
                                                         ul(
                                                                 each(persons, person ->
                                                                         li(
-                                                                                a(person).withHref("/" + person)
+                                                                                a(person).withHref("/" + person.replaceAll("\\s", "").toLowerCase())
                                                                         )
                                                                 )
                                                         )
