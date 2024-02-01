@@ -1,6 +1,8 @@
 package com.iw.page;
 
 import com.iw.Page;
+import j2html.tags.specialized.FooterTag;
+import j2html.tags.specialized.HeaderTag;
 
 import java.util.List;
 
@@ -26,27 +28,29 @@ public final class HomePage implements Page {
                         link().withRel("stylesheet").withHref("css/simple.min.css"),
                         link().withRel("icon").withType("image/png").withHref("images/logo/logo_32.png")
                 ),
-                body(
-                        header(
-                                img().withSrc("images/logo/logo_96.png").withWidth("70"),
-                                h1("Blunts2"),
-                                p(join(
-                                        b("Blunts2"),
-                                        "is statistic with the number of failed attempts to complete the game.")
-                                )
-                        ),
-                        main(
-                                p("content")
-                        ),
-                        footer(
-                                p(join(
-                                        "Made by ",
-                                        a("@Ig-v-k").withHref("https://github.com/Ig-v-k"),
-                                        ", 2024"
-                                )),
-                                nav(ul(li(a("GitHub").withHref("https://github.com/Ig-v-k/blunts2"))))
-                        )
-                )
+                body(hdr(), main(p("content")), ftr())
         ).render();
+    }
+
+    private static HeaderTag hdr() {
+        return header(
+                img().withSrc("images/logo/logo_96.png").withWidth("70"),
+                h1("Blunts2"),
+                p(join(
+                        b("Blunts2"),
+                        "is statistic with the number of failed attempts to complete the game.")
+                )
+        );
+    }
+
+    private static FooterTag ftr() {
+        return footer(
+                p(join(
+                        "Made by ",
+                        a("@Ig-v-k").withHref("https://github.com/Ig-v-k"),
+                        ", 2024"
+                )),
+                nav(ul(li(a("GitHub").withHref("https://github.com/Ig-v-k/blunts2"))))
+        );
     }
 }
