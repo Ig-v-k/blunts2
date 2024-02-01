@@ -68,7 +68,9 @@ public final class HomePage implements Page {
                 tbody(
                         each(
                                 persons, (i, s) -> tr(
-                                        th(persons.get(i)).withScope("row"),
+                                        th(
+                                                a(s).withHref("/" + s.replaceAll("\\s", "").toLowerCase())
+                                        ).withScope("row"),
                                         td("0"))))
         );
     }
