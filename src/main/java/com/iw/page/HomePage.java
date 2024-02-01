@@ -3,7 +3,9 @@ package com.iw.page;
 import com.iw.Page;
 import j2html.tags.specialized.FooterTag;
 import j2html.tags.specialized.HeaderTag;
+import j2html.tags.specialized.TableTag;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static j2html.TagCreator.*;
@@ -28,7 +30,7 @@ public final class HomePage implements Page {
                         link().withRel("stylesheet").withHref("css/simple.min.css"),
                         link().withRel("icon").withType("image/png").withHref("images/logo/logo_32.png")
                 ),
-                body(hdr(), main(p("content")), ftr())
+                body(hdr(), main(tbl(persons)), ftr())
         ).render();
     }
 
@@ -51,6 +53,23 @@ public final class HomePage implements Page {
                         ", 2024"
                 )),
                 nav(ul(li(a("GitHub").withHref("https://github.com/Ig-v-k/blunts2"))))
+        );
+    }
+
+    private static TableTag tbl(final List<String> persons) {
+        final List<String> headers = new ArrayList<>() {{
+            add("Streamer");
+            add("Blunts");
+        }};
+        return table(
+                thead(
+                        tr(
+                                each(headers, s -> th(s).withScope("col")))),
+                tbody(
+                        each(
+                                persons, (i, s) -> tr(
+                                        th(persons.get(i)).withScope("row"),
+                                        td("0"))))
         );
     }
 }
