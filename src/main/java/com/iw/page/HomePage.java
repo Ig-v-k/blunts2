@@ -47,11 +47,7 @@ public final class HomePage implements Page {
 
     private static FooterTag ftr() {
         return footer(
-                p(join(
-                        "Made by ",
-                        a("@Ig-v-k").withHref("https://github.com/Ig-v-k"),
-                        ", 2024"
-                )),
+                p(join("Made by ", a("@Ig-v-k").withHref("https://github.com/Ig-v-k"), ", 2024")),
                 nav(a("GitHub").withHref("https://github.com/Ig-v-k/blunts2"))
         );
     }
@@ -64,13 +60,13 @@ public final class HomePage implements Page {
         return table(
                 thead(
                         tr(
-                                each(headers, s -> th(s).withScope("col")))),
+                                each(headers, s -> th(s)))),
                 tbody(
                         each(
                                 persons, (i, s) -> tr(
-                                        th(
+                                        td(
                                                 a(s).withHref("/" + s.replaceAll("\\s", "").toLowerCase())
-                                        ).withScope("row"),
+                                        ),
                                         td("0"))))
         );
     }
