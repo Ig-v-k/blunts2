@@ -1,6 +1,7 @@
 package com.iw.page;
 
 import com.iw.Page;
+import com.iw.facet.PersonsSectionFacet;
 import com.iw.facet.PersonsTableFacet;
 
 import java.util.ArrayList;
@@ -24,6 +25,6 @@ public final class PersonsPage implements Page {
 
     @Override
     public String render() {
-        return new GeneralPage(new PersonsTableFacet(persons)).render();
+        return new GeneralPage(new PersonsSectionFacet(persons)).render();
     }
 }
