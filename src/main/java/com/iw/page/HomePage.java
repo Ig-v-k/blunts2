@@ -63,7 +63,7 @@ public final class HomePage implements Page {
                                 each(headers, s -> th(s)))),
                 tbody(
                         each(
-                                persons, (i, s) -> tr(
+                                persons, s -> tr(
                                         td(
                                                 a(s).withHref("/" + s.replaceAll("\\s", "").toLowerCase())
                                         ),
