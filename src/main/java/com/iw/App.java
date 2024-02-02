@@ -8,19 +8,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class App {
-    public static void main(final String[] args) {
-        Javalin.create(cfg ->
-                        cfg.staticFiles.add("/assets", Location.CLASSPATH))
-                .get("/", ctx -> ctx.html(new HomePage(persons()).content()).status(202))
-                .error(404, ctx -> ctx.result("Generic 404 message"))
-                .start(8080);
-    }
 
-    private static List<String> persons() {
-        return new ArrayList<>() {{
-            add("Arthas");
-            add("Glad Valakas");
-            add("Kuplinov");
-        }};
+    private static final List<String> persons = new ArrayList<>() {{
+        add("Arthas");
+        add("Glad Valakas");
+        add("Kuplinov");
+    }};
+
+    public static void main(final String[] args) {
+        final Javalin app = Javalin.create(cfg ->
+                        cfg.staticFiles.add("/assets", Location.CLASSPATH))
+                .get("/", ctx -> ctx.html(new HomePage(persons).content()).status(202))
+                .error(404, ctx -> ctx.result("Generic 404 message"));
+        for (String person : persons) {
+            final String formatted = person;
+            app.get("/" + person, ctx -> ctx.html(new PersonPage(person).content()).status(202));
+        }
+        app.start(8080);
     }
 }
