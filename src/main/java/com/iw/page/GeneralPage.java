@@ -37,7 +37,7 @@ public final class GeneralPage implements Page {
 
     private static HeaderTag hdr() {
         return header(
-                h1("Blunts2"),
+                img().withSrc("images/logo/logo_96.png").withWidth("70"),
                 nav(
                         a("Home").withHref("/"),
                         a("Persons").withHref("/persons")

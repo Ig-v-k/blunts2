@@ -11,6 +11,7 @@ public final class AboutFacet implements Facet<MainTag> {
     @Override
     public Tag<MainTag> tag() {
         return main(
+                h1("Blunts2"),
                 p(join(
                         b("Blunts2"),
                         "is statistic with the number of failed attempts to complete the game.")
