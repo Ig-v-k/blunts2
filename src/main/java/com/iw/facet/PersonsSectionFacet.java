@@ -22,7 +22,7 @@ public final class PersonsSectionFacet implements Facet<MainTag> {
     public Tag<MainTag> tag() {
         final Facet<TableTag> table = new PersonsTableFacet(persons);
         return main(
-                h2("Persons"),
+                h1("Persons"),
                 p("Page with general statistics of persons."),
                 table.tag()
         );
