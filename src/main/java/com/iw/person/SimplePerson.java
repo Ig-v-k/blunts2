@@ -3,7 +3,6 @@ package com.iw.person;
 import com.iw.Container;
 import com.iw.Person;
 
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -47,31 +46,121 @@ public final class SimplePerson implements Person {
 
     @Override
     public String firstname() {
-        return null;
+        final String query = String.format("SELECT firstname FROM person WHERE id = %s", id);
+        try (final Statement st = container.conn().createStatement();
+             final ResultSet rs = st.executeQuery(query)) {
+            final int row = rs.getRow();
+            if (row > 0) {
+                final String firstname = rs.getString("firstname");
+                return firstname;
+            } else {
+                final String mes = String.format(
+                        "Cannot find column 'firstname' with query: \"%s\", and arguments: %s",
+                        query, Arrays.toString(new int[]{id}));
+                throw new RuntimeException(mes);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public String lastname() {
-        return null;
+        final String query = String.format("SELECT lastname FROM person WHERE id = %s", id);
+        try (final Statement st = container.conn().createStatement();
+             final ResultSet rs = st.executeQuery(query)) {
+            final int row = rs.getRow();
+            if (row > 0) {
+                final String lastname = rs.getString("lastname");
+                return lastname;
+            } else {
+                final String mes = String.format(
+                        "Cannot find column 'lastname' with query: \"%s\", and arguments: %s",
+                        query, Arrays.toString(new int[]{id}));
+                throw new RuntimeException(mes);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public int blunts() {
-        return 0;
+        final String query = String.format("SELECT blunts FROM person WHERE id = %s", id);
+        try (final Statement st = container.conn().createStatement();
+             final ResultSet rs = st.executeQuery(query)) {
+            final int row = rs.getRow();
+            if (row > 0) {
+                final int blunts = rs.getInt("blunts");
+                return blunts;
+            } else {
+                final String mes = String.format(
+                        "Cannot find column 'blunts' with query: \"%s\", and arguments: %s",
+                        query, Arrays.toString(new int[]{id}));
+                throw new RuntimeException(mes);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public int period() {
-        return 0;
+        final String query = String.format("SELECT period FROM person WHERE id = %s", id);
+        try (final Statement st = container.conn().createStatement();
+             final ResultSet rs = st.executeQuery(query)) {
+            final int row = rs.getRow();
+            if (row > 0) {
+                final int period = rs.getInt("period");
+                return period;
+            } else {
+                final String mes = String.format(
+                        "Cannot find column 'period' with query: \"%s\", and arguments: %s",
+                        query, Arrays.toString(new int[]{id}));
+                throw new RuntimeException(mes);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public String nickname() {
-        return null;
+        final String query = String.format("SELECT nickname FROM person WHERE id = %s", id);
+        try (final Statement st = container.conn().createStatement();
+             final ResultSet rs = st.executeQuery(query)) {
+            final int row = rs.getRow();
+            if (row > 0) {
+                final String nickname = rs.getString("nickname");
+                return nickname;
+            } else {
+                final String mes = String.format(
+                        "Cannot find column 'nickname' with query: \"%s\", and arguments: %s",
+                        query, Arrays.toString(new int[]{id}));
+                throw new RuntimeException(mes);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public String link() {
-        return null;
+        final String query = String.format("SELECT link FROM person WHERE id = %s", id);
+        try (final Statement st = container.conn().createStatement();
+             final ResultSet rs = st.executeQuery(query)) {
+            final int row = rs.getRow();
+            if (row > 0) {
+                final String link = rs.getString("link");
+                return link;
+            } else {
+                final String mes = String.format(
+                        "Cannot find column 'link' with query: \"%s\", and arguments: %s",
+                        query, Arrays.toString(new int[]{id}));
+                throw new RuntimeException(mes);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
