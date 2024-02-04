@@ -12,7 +12,7 @@ public final class App {
         Javalin.create(cfg -> cfg.staticFiles.add("/assets/public", Location.CLASSPATH))
                 .get("/", ctx -> ctx.html(new HomePage().render()))
                 .get("/persons", ctx -> ctx.html(new PersonsPage().render()))
-                .get("/persons/{id}", ctx -> ctx.html(new PersonPage(ctx.pathParam("id")).render()))
+                .get("/persons/{code}", ctx -> ctx.html(new PersonPage(ctx.pathParam("code")).render()))
                 .error(HttpStatus.NOT_FOUND, ctx -> ctx.result("404. Page not found"))
                 .start(8080);
     }

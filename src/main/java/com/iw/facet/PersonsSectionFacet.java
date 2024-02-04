@@ -3,7 +3,6 @@ package com.iw.facet;
 import com.iw.Facet;
 import j2html.tags.Tag;
 import j2html.tags.specialized.MainTag;
-import j2html.tags.specialized.SectionTag;
 import j2html.tags.specialized.TableTag;
 
 import java.util.List;
