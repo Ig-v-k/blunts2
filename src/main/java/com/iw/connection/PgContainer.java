@@ -20,6 +20,9 @@ public final class PgContainer implements Container {
 
     @Override
     public Connection conn() throws SQLException {
-        return DriverManager.getConnection(url);
+        final Connection connection = DriverManager.getConnection(url);
+        connection.setSchema("public");
+        connection.setAutoCommit(false);
+        return connection;
     }
 }
