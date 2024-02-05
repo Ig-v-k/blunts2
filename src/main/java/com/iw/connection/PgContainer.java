@@ -10,8 +10,8 @@ public final class PgContainer implements Container {
 
     private final String url;
 
-    public PgContainer(final String url, final String username, final String password) {
-        this(String.format("%s?username=%s&password=%s", url, username, password));
+    public PgContainer(final String url, final String user, final String password) {
+        this(String.format("%s?user=%s&password=%s", url, user, password));
     }
 
     public PgContainer(String url) {

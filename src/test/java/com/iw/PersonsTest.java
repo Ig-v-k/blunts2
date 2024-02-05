@@ -13,4 +13,9 @@ public final class PersonsTest extends ContainerAbstract {
         final List<Person> persons = new SimplePersons(container).list();
         assertThat(persons).isNotEmpty();
     }
+
+    @Test(expected = NullPointerException.class)
+    public void npe() {
+        new SimplePersons(null).list();
+    }
 }
