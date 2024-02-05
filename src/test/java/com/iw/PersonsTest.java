@@ -1,5 +1,6 @@
 package com.iw;
 
+import com.iw.persons.ConstPersons;
 import com.iw.persons.SimplePersons;
 import org.junit.Test;
 
@@ -11,6 +12,12 @@ public final class PersonsTest extends ContainerAbstract {
     @Test
     public void simple() {
         final List<Person> persons = new SimplePersons(container).list();
+        assertThat(persons).isNotEmpty();
+    }
+
+    @Test
+    public void cnst() {
+        final List<Person> persons = new ConstPersons(container).list();
         assertThat(persons).isNotEmpty();
     }
 
