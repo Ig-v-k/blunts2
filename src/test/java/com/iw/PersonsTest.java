@@ -1,5 +1,6 @@
 package com.iw;
 
+import com.iw.persons.ByCodePersons;
 import com.iw.persons.ByIdPersons;
 import com.iw.persons.ConstPersons;
 import com.iw.persons.SimplePersons;
@@ -30,6 +31,12 @@ public final class PersonsTest extends ContainerAbstract {
     @Test
     public void byId() {
         final List<Person> list = new ByIdPersons(container, 0).list();
-        assertThat(list).isNotEmpty();
+        assertThat(list).isNotEmpty().hasSize(1);
+    }
+
+    @Test
+    public void byCode() {
+        final List<Person> list = new ByCodePersons(container, 100).list();
+        assertThat(list).isNotEmpty().hasSize(1);
     }
 }
