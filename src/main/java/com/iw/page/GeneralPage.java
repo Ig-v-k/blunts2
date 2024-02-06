@@ -2,6 +2,7 @@ package com.iw.page;
 
 import com.iw.Facet;
 import com.iw.Page;
+import j2html.tags.DomContent;
 import j2html.tags.specialized.FooterTag;
 import j2html.tags.specialized.HeaderTag;
 
@@ -9,6 +10,7 @@ import static j2html.TagCreator.*;
 
 public final class GeneralPage implements Page {
 
+    private static DomContent hdr = emptyTag("h1");
     private final Facet facet;
 
     public GeneralPage(Facet facet) {
@@ -37,11 +39,12 @@ public final class GeneralPage implements Page {
 
     private static HeaderTag hdr() {
         return header(
-                img().withSrc("/images/logo/logo_96.png").withWidth("70"),
                 nav(
                         a("Home").withHref("/"),
-                        a("Persons").withHref("/persons")
-                )
+                        a("Persons").withHref("/persons"),
+                        a("Github").withHref("https://github.com/Ig-v-k/blunts2")
+                ),
+                hdr
         );
     }
 
