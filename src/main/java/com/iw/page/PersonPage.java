@@ -2,6 +2,7 @@ package com.iw.page;
 
 import com.iw.Page;
 import com.iw.Person;
+import com.iw.facet.PersonFacet;
 
 public final class PersonPage implements Page {
 
@@ -13,6 +14,7 @@ public final class PersonPage implements Page {
 
     @Override
     public String render() {
-        return new GeneralPage(null).render();
+        return new GeneralPage(
+                new PersonFacet(person)).render();
     }
 }
