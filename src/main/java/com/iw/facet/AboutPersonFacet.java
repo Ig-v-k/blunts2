@@ -8,11 +8,11 @@ import j2html.tags.specialized.SectionTag;
 import static j2html.TagCreator.h1;
 import static j2html.TagCreator.section;
 
-public final class PersonFacet implements Facet<SectionTag> {
+public final class AboutPersonFacet implements Facet<SectionTag> {
 
     private final Person person;
 
-    public PersonFacet(Person person) {
+    public AboutPersonFacet(Person person) {
         this.person = person;
     }
 
