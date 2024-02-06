@@ -4,7 +4,7 @@ import com.iw.connection.PgContainer;
 import com.iw.page.HomePage;
 import com.iw.page.PersonPage;
 import com.iw.page.PersonsPage;
-import com.iw.person.ByIdPersons;
+import com.iw.persons.ByIdPersons;
 import io.javalin.Javalin;
 import io.javalin.http.HttpStatus;
 import io.javalin.http.staticfiles.Location;

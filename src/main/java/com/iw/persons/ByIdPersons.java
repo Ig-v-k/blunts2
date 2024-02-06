@@ -1,8 +1,10 @@
-package com.iw.person;
+package com.iw.persons;
 
 import com.iw.Container;
 import com.iw.Person;
 import com.iw.Persons;
+import com.iw.person.ConstPerson;
+import com.iw.person.SimplePerson;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

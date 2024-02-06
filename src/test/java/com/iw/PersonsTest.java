@@ -1,6 +1,6 @@
 package com.iw;
 
-import com.iw.person.ByIdPersons;
+import com.iw.persons.ByIdPersons;
 import com.iw.persons.ConstPersons;
 import com.iw.persons.SimplePersons;
 import org.junit.Test;
