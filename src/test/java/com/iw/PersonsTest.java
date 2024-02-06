@@ -1,5 +1,6 @@
 package com.iw;
 
+import com.iw.persons.ByIdPersons;
 import com.iw.persons.ConstPersons;
 import com.iw.persons.SimplePersons;
 import org.junit.Test;
@@ -24,5 +25,11 @@ public final class PersonsTest extends ContainerAbstract {
     @Test(expected = NullPointerException.class)
     public void npe() {
         new SimplePersons(null).list();
+    }
+
+    @Test
+    public void byId() {
+        final List<Person> list = new ByIdPersons(container, 0).list();
+        assertThat(list).isNotEmpty();
     }
 }
