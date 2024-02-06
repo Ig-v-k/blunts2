@@ -5,6 +5,7 @@ import com.iw.page.HomePage;
 import com.iw.page.PersonPage;
 import com.iw.page.PersonsPage;
 import com.iw.persons.ByCodePersons;
+import com.iw.persons.ConstPersons;
 import io.javalin.Javalin;
 import io.javalin.http.HttpStatus;
 import io.javalin.http.staticfiles.Location;
@@ -14,7 +15,7 @@ public final class App {
         final Container c = new PgContainer("jdbc:postgresql://localhost:5432/postgres", "postgres", "postgres");
         Javalin.create(cfg -> cfg.staticFiles.add("/assets/public", Location.CLASSPATH))
                 .get("/", ctx -> ctx.html(new HomePage().render()))
-                .get("/persons", ctx -> ctx.html(new PersonsPage().render()))
+                .get("/persons", ctx -> ctx.html(new PersonsPage(new ConstPersons(c).list()).render()))
                 .get("/persons/{code}", ctx -> ctx.html(
                         new PersonPage(
                                 new ByCodePersons(c, Integer.parseInt(ctx.pathParam("code")))

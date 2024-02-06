@@ -1,6 +1,7 @@
 package com.iw.facet;
 
 import com.iw.Facet;
+import com.iw.Person;
 import j2html.tags.Tag;
 import j2html.tags.specialized.TableTag;
 
@@ -11,9 +12,9 @@ import static j2html.TagCreator.*;
 
 public final class PersonsTableFacet implements Facet<TableTag> {
 
-    private final List<String> persons;
+    private final List<Person> persons;
 
-    public PersonsTableFacet(List<String> persons) {
+    public PersonsTableFacet(List<Person> persons) {
         this.persons = persons;
     }
 
@@ -29,10 +30,8 @@ public final class PersonsTableFacet implements Facet<TableTag> {
                                 each(headers, s -> th(s)))),
                 tbody(
                         each(
-                                persons, s -> tr(
-                                        td(
-                                                a(s).withHref("/" + s.replaceAll("\\s", "").toLowerCase())
-                                        ),
+                                persons, p -> tr(
+                                        td(a(p.nickname()).withHref("/persons/" + p.code())),
                                         td("0"))))
         );
     }

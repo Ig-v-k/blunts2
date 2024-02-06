@@ -24,8 +24,8 @@ public final class GeneralPage implements Page {
                         meta().withName("keywords").withContent("streamers, statistic, rating, twitch"),
                         meta().withName("description").withContent("Streamers failed statistic"),
                         title("Blunts2"),
-                        link().withRel("stylesheet").withHref("css/simple.min.css"),
-                        link().withRel("icon").withType("image/png").withHref("images/logo/logo_32.png")
+                        link().withRel("stylesheet").withHref("/css/simple.min.css"),
+                        link().withRel("icon").withType("image/png").withHref("/images/logo/logo_32.png")
                 ),
                 body(
                         hdr(),
@@ -37,7 +37,7 @@ public final class GeneralPage implements Page {
 
     private static HeaderTag hdr() {
         return header(
-                img().withSrc("images/logo/logo_96.png").withWidth("70"),
+                img().withSrc("/images/logo/logo_96.png").withWidth("70"),
                 nav(
                         a("Home").withHref("/"),
                         a("Persons").withHref("/persons")
