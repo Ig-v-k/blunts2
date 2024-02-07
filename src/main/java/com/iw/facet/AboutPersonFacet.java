@@ -17,9 +17,9 @@ public final class AboutPersonFacet implements Facet<MainTag> {
 
     @Override
     public Tag<MainTag> tag() {
-        final String nickname = person.nickname();
+        final String headline = String.format("%s %s", person.firstname(), person.lastname());
         return main(
-                h1(nickname),
+                h2(headline),
                 p());
     }
 }
