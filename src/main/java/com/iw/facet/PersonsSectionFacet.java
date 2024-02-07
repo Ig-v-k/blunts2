@@ -22,8 +22,8 @@ public final class PersonsSectionFacet implements Facet<MainTag> {
     public Tag<MainTag> tag() {
         final Facet<TableTag> table = new PersonsTableFacet(persons);
         return main(
-                h1("Persons"),
-                p("Page with general statistics of persons."),
+                h2("Persons"),
+                p("General statistics of persons."),
                 table.tag()
         );
     }

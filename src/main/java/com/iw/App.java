@@ -14,8 +14,7 @@ public final class App {
     public static void main(final String[] args) {
         final Container c = new PgContainer("jdbc:postgresql://localhost:5432/postgres", "postgres", "postgres");
         Javalin.create(cfg -> cfg.staticFiles.add("/assets/public", Location.CLASSPATH))
-                .get("/", ctx -> ctx.html(new HomePage().render()))
-                .get("/persons", ctx -> ctx.html(new PersonsPage(new ConstPersons(c).list()).render()))
+                .get("/", ctx -> ctx.html(new HomePage(new ConstPersons(c).list()).render()))
                 .get("/persons/{code}", ctx -> ctx.html(
                         new PersonPage(
                                 new ByCodePersons(c, Integer.parseInt(ctx.pathParam("code")))

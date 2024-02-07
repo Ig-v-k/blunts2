@@ -47,7 +47,6 @@ public final class GeneralPage implements Page {
         return header(
                 nav(
                         a("Home").withHref("/"),
-                        a("Persons").withHref("/persons"),
                         a("Github").withHref("https://github.com/Ig-v-k/blunts2")
                 ),
                 ttl.isEmpty() ? emptyTag("h1") : h1(ttl),
