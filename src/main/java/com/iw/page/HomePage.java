@@ -17,6 +17,7 @@ public final class HomePage implements Page {
     @Override
     public String render() {
         return new GeneralPage(
+                "Blunts2",
                 "Blunts2 Statistic",
                 "Blunts2 is statistic with the number of failed attempts to complete the game.",
                 new PersonsSectionFacet(persons)).render();

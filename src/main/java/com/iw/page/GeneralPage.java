@@ -10,15 +10,17 @@ import static j2html.TagCreator.*;
 public final class GeneralPage implements Page {
 
     private static String ttl = "";
+    private static String hdln = "";
     private static String desc = "";
     private final Facet facet;
 
     public GeneralPage(Facet facet) {
-        this("", "", facet);
+        this("", "", "", facet);
     }
 
-    public GeneralPage(final String ttl, final String desc, Facet facet) {
+    public GeneralPage(final String ttl, final String hdln, final String desc, Facet facet) {
         GeneralPage.ttl = ttl;
+        GeneralPage.hdln = hdln;
         GeneralPage.desc = desc;
         this.facet = facet;
     }
@@ -31,7 +33,7 @@ public final class GeneralPage implements Page {
                         meta().withName("viewport").withContent("width=device-width, initial-scale=1.0"),
                         meta().withName("keywords").withContent("streamers, statistic, rating, twitch"),
                         meta().withName("description").withContent("Streamers failed statistic"),
-                        title("Blunts2"),
+                        title(ttl.isEmpty() ? "Blunts2" : ttl),
                         link().withRel("stylesheet").withHref("/css/simple.min.css"),
                         link().withRel("icon").withType("image/png").withHref("/images/logo/logo_32.png")
                 ),
@@ -49,7 +51,7 @@ public final class GeneralPage implements Page {
                         a("Home").withHref("/"),
                         a("Github").withHref("https://github.com/Ig-v-k/blunts2")
                 ),
-                ttl.isEmpty() ? emptyTag("h1") : h1(ttl),
+                hdln.isEmpty() ? emptyTag("h1") : h1(hdln),
                 desc.isEmpty() ? emptyTag("p") : p(desc)
         );
     }

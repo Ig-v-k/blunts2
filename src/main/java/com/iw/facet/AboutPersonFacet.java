@@ -5,8 +5,7 @@ import com.iw.Person;
 import j2html.tags.Tag;
 import j2html.tags.specialized.MainTag;
 
-import static j2html.TagCreator.h1;
-import static j2html.TagCreator.main;
+import static j2html.TagCreator.*;
 
 public final class AboutPersonFacet implements Facet<MainTag> {
 
@@ -19,6 +18,8 @@ public final class AboutPersonFacet implements Facet<MainTag> {
     @Override
     public Tag<MainTag> tag() {
         final String nickname = person.nickname();
-        return main(h1(nickname));
+        return main(
+                h1(nickname),
+                p());
     }
 }

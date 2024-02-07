@@ -14,6 +14,11 @@ public final class PersonPage implements Page {
 
     @Override
     public String render() {
-        return new GeneralPage(new AboutPersonFacet(person)).render();
+        final String format = String.format("%s %s Statistic", person.firstname(), person.lastname());
+        return new GeneralPage(
+                format,
+                format,
+                "",
+                new AboutPersonFacet(person)).render();
     }
 }
