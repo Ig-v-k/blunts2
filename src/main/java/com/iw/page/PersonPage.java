@@ -14,7 +14,6 @@ public final class PersonPage implements Page {
 
     @Override
     public String render() {
-        return new GeneralPage(
-                new AboutPersonFacet(person)).render();
+        return new GeneralPage(new AboutPersonFacet(person)).render();
     }
 }

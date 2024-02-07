@@ -2,7 +2,6 @@ package com.iw.page;
 
 import com.iw.Facet;
 import com.iw.Page;
-import j2html.tags.DomContent;
 import j2html.tags.specialized.FooterTag;
 import j2html.tags.specialized.HeaderTag;
 
@@ -10,10 +9,17 @@ import static j2html.TagCreator.*;
 
 public final class GeneralPage implements Page {
 
-    private static DomContent hdr = emptyTag("h1");
+    private static String ttl = "";
+    private static String desc = "";
     private final Facet facet;
 
     public GeneralPage(Facet facet) {
+        this("", "", facet);
+    }
+
+    public GeneralPage(final String ttl, final String desc, Facet facet) {
+        GeneralPage.ttl = ttl;
+        GeneralPage.desc = desc;
         this.facet = facet;
     }
 
@@ -44,7 +50,8 @@ public final class GeneralPage implements Page {
                         a("Persons").withHref("/persons"),
                         a("Github").withHref("https://github.com/Ig-v-k/blunts2")
                 ),
-                hdr
+                ttl.isEmpty() ? emptyTag("h1") : h1(ttl),
+                desc.isEmpty() ? emptyTag("p") : p(desc)
         );
     }
 
