@@ -32,7 +32,7 @@ public final class PersonsTableFacet implements Facet<TableTag> {
                         each(
                                 persons, p -> tr(
                                         td(a(p.nickname()).withHref("/persons/" + p.code())),
-                                        td("0"))))
+                                        td(String.valueOf(p.blunts())))))
         );
     }
 }
