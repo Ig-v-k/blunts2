@@ -2,9 +2,7 @@ package com.iw.page;
 
 import com.iw.Page;
 import com.iw.Person;
-import com.iw.facet.AboutPersonFacet;
-
-import java.util.Date;
+import com.iw.facet.ContentPersonFacet;
 
 public final class PersonPage implements Page {
 
@@ -18,6 +16,6 @@ public final class PersonPage implements Page {
     public String render() {
         final String format = String.format("%s %s Statistic", person.firstname(), person.lastname());
         final String description = String.format("Main statistics of %s %s blunts in games.", person.firstname(), person.lastname());
-        return new GeneralPage(format, format, description, new AboutPersonFacet(person)).render();
+        return new GeneralPage(format, format, description, new ContentPersonFacet(person)).render();
     }
 }
