@@ -1,6 +1,10 @@
 package com.iw.person;
 
+import com.iw.Game;
 import com.iw.Person;
+
+import java.util.Collections;
+import java.util.List;
 
 public final class ConstPerson implements Person {
 
@@ -62,5 +66,10 @@ public final class ConstPerson implements Person {
     @Override
     public String link() {
         return link;
+    }
+
+    @Override
+    public List<Game> games() {
+        return Collections.emptyList();
     }
 }

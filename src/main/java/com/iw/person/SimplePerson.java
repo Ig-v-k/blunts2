@@ -1,12 +1,15 @@
 package com.iw.person;
 
 import com.iw.Container;
+import com.iw.Game;
 import com.iw.Person;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public final class SimplePerson implements Person {
 
@@ -162,5 +165,10 @@ public final class SimplePerson implements Person {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public List<Game> games() {
+        return Collections.emptyList();
     }
 }
