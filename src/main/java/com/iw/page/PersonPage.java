@@ -1,5 +1,6 @@
 package com.iw.page;
 
+import com.iw.Game;
 import com.iw.Page;
 import com.iw.Person;
 import com.iw.facet.ContentPersonFacet;
@@ -12,8 +13,9 @@ public final class PersonPage implements Page {
 
     private final List<Game> games;
 
-    public PersonPage(final Person person) {
+    public PersonPage(final Person person, List<Game> games) {
         this.person = person;
+        this.games = games;
     }
 
     @Override
