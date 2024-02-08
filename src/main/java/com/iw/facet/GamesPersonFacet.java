@@ -20,12 +20,13 @@ public final class GamesPersonFacet implements Facet<DivTag> {
 
     @Override
     public Tag<DivTag> tag() {
+        final String format = "%s - %s";
         return div(
                 each(games, (i, g) ->
                         details(
-                                summary(g.title()),
+                                summary(String.format(format, g.title(), g.blunts())),
                                 each(g.attempts(), a -> {
-                                    p(String.format("%s - %s", new Date(a.period()), a.blunts()));
+                                    p(String.format(format, new Date(a.period()), a.blunts()));
                                 })
                         )));
     }
