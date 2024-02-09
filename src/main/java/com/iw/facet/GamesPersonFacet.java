@@ -26,7 +26,7 @@ public final class GamesPersonFacet implements Facet<DivTag> {
                 each(list, (i, g) ->
                         details(
                                 summary(String.format("%s. %s - %s", i, g.title(), g.blunts())),
-                                each(g.attempts(), a ->
+                                each(g.attempts().list(), a ->
                                         p(String.format("%s - %s", new Date(a.period()), a.blunts())))
                         )));
     }
