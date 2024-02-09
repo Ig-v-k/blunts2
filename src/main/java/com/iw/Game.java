@@ -7,5 +7,5 @@ public interface Game {
     int person();
     String title();
     int blunts();
-    List<Attempt> attempts();
+    Attempts attempts();
 }

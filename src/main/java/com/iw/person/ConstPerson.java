@@ -1,6 +1,7 @@
 package com.iw.person;
 
 import com.iw.Game;
+import com.iw.Games;
 import com.iw.Person;
 
 import java.util.Collections;
@@ -69,7 +70,7 @@ public final class ConstPerson implements Person {
     }
 
     @Override
-    public List<Game> games() {
-        return Collections.emptyList();
+    public Games games() {
+        return null;
     }
 }

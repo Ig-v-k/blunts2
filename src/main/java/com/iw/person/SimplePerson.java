@@ -2,6 +2,7 @@ package com.iw.person;
 
 import com.iw.Container;
 import com.iw.Game;
+import com.iw.Games;
 import com.iw.Person;
 
 import java.sql.ResultSet;
@@ -168,7 +169,7 @@ public final class SimplePerson implements Person {
     }
 
     @Override
-    public List<Game> games() {
-        return Collections.emptyList();
+    public Games games() {
+        return null;
     }
 }

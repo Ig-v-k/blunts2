@@ -1,7 +1,5 @@
 package com.iw;
 
-import java.util.List;
-
 public interface Person {
     int id();
     int code();
@@ -11,5 +9,5 @@ public interface Person {
     int period();
     String nickname();
     String link();
-    List<Game> games();
+    Games games();
 }
