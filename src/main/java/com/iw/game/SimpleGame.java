@@ -3,6 +3,7 @@ package com.iw.game;
 import com.iw.Attempts;
 import com.iw.Container;
 import com.iw.Game;
+import com.iw.attempts.SimpleAttempts;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -68,7 +69,7 @@ public final class SimpleGame implements Game {
 
     @Override
     public int blunts() {
-        final String query = String.format("SELECT SUM(blunts) FROM attempt WHERE game = %s", id);
+        final String query = String.format("SELECT SUM(blunts) as blunts FROM attempt WHERE game = %s", id);
         try (final Statement st = container.conn().createStatement();
              final ResultSet rs = st.executeQuery(query)) {
             rs.next();
@@ -89,6 +90,6 @@ public final class SimpleGame implements Game {
 
     @Override
     public Attempts attempts() {
-        return null;
+        return new SimpleAttempts(container, id);
     }
 }

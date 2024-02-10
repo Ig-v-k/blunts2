@@ -16,8 +16,7 @@ public final class App {
                 .get("/", ctx -> ctx.html(new HomePage(new ConstPersons(c).list()).render()))
                 .get("/persons/{code}", ctx -> ctx.html(
                         new PersonPage(
-                                new ByCodePersons(c, Integer.parseInt(ctx.pathParam("code")))
-                                        .list().get(0)).render()))
+                                new ByCodePersons(c, Integer.parseInt(ctx.pathParam("code"))).list().get(0)).render()))
                 .error(HttpStatus.NOT_FOUND, ctx -> ctx.result("404. Page not found"))
                 .start(8080);
     }

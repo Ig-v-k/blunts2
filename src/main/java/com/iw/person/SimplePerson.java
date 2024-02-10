@@ -4,12 +4,14 @@ import com.iw.Container;
 import com.iw.Game;
 import com.iw.Games;
 import com.iw.Person;
+import com.iw.game.SimpleGame;
+import com.iw.games.SimpleGames;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public final class SimplePerson implements Person {
@@ -90,22 +92,11 @@ public final class SimplePerson implements Person {
 
     @Override
     public int blunts() {
-        final String query = String.format("SELECT blunts FROM person WHERE id = %s", id);
-        try (final Statement st = container.conn().createStatement();
-             final ResultSet rs = st.executeQuery(query)) {
-            final int row = rs.getRow();
-            if (row > 0) {
-                final int blunts = rs.getInt("blunts");
-                return blunts;
-            } else {
-                final String mes = String.format(
-                        "Cannot find column 'blunts' with query: \"%s\", and arguments: %s",
-                        query, Arrays.toString(new int[]{id}));
-                throw new RuntimeException(mes);
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+        int blunts = 0;
+        for (Game game : games().list()) {
+            blunts += game.blunts();
         }
+        return blunts;
     }
 
     @Override
@@ -170,6 +161,6 @@ public final class SimplePerson implements Person {
 
     @Override
     public Games games() {
-        return null;
+        return new SimpleGames(container, id);
     }
 }

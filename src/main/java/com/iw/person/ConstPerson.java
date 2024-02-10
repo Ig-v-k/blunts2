@@ -1,11 +1,7 @@
 package com.iw.person;
 
-import com.iw.Game;
 import com.iw.Games;
 import com.iw.Person;
-
-import java.util.Collections;
-import java.util.List;
 
 public final class ConstPerson implements Person {
 
@@ -13,20 +9,20 @@ public final class ConstPerson implements Person {
     private final int code;
     private final String firstname;
     private final String lastname;
-    private final int blunts;
     private final int period;
     private final String nickname;
     private final String link;
+    private final Games games;
 
-    public ConstPerson(Person person, int code, String firstname, String lastname, int blunts, int period, String nickname, String link) {
+    public ConstPerson(Person person, int code, String firstname, String lastname, int period, String nickname, String link, Games games) {
         this.person = person;
         this.code = code;
         this.firstname = firstname;
         this.lastname = lastname;
-        this.blunts = blunts;
         this.period = period;
         this.nickname = nickname;
         this.link = link;
+        this.games = games;
     }
 
     @Override
@@ -51,7 +47,7 @@ public final class ConstPerson implements Person {
 
     @Override
     public int blunts() {
-        return blunts;
+        return person.blunts();
     }
 
     @Override
@@ -71,6 +67,6 @@ public final class ConstPerson implements Person {
 
     @Override
     public Games games() {
-        return null;
+        return games;
     }
 }
