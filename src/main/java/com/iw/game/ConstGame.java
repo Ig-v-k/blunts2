@@ -8,11 +8,13 @@ public final class ConstGame implements Game {
     private final Game game;
     private final int person;
     private final String title;
+    private final Attempts attempts;
 
-    public ConstGame(Game game, int person, String title) {
+    public ConstGame(Game game, int person, String title, Attempts attempts) {
         this.game = game;
         this.person = person;
         this.title = title;
+        this.attempts = attempts;
     }
 
     @Override
@@ -37,6 +39,6 @@ public final class ConstGame implements Game {
 
     @Override
     public Attempts attempts() {
-        return game.attempts();
+        return attempts;
     }
 }

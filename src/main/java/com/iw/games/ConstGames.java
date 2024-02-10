@@ -3,6 +3,7 @@ package com.iw.games;
 import com.iw.Container;
 import com.iw.Game;
 import com.iw.Games;
+import com.iw.attempts.ConstAttempts;
 import com.iw.game.ConstGame;
 import com.iw.game.SimpleGame;
 
@@ -34,8 +35,8 @@ public final class ConstGames implements Games {
                 games.add(new ConstGame(
                         simple,
                         rs.getInt("person"),
-                        rs.getString("title")
-                ));
+                        rs.getString("title"),
+                        new ConstAttempts(container, id)));
             }
             return games;
         } catch (SQLException e) {
