@@ -31,7 +31,7 @@ public final class PersonsTableFacet implements Facet<TableTag> {
                 tbody(
                         each(
                                 persons, p -> tr(
-                                        td(a(p.nickname()).withHref("/persons/" + p.code())),
+                                        td(a(p.nickname()).withHref("/" + p.nickname())),
                                         td(String.valueOf(p.blunts())))))
         );
     }
