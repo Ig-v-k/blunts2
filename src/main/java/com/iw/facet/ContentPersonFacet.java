@@ -18,7 +18,7 @@ public final class ContentPersonFacet implements Facet<DivTag> {
     @Override
     public Tag<DivTag> tag() {
         return div(
-                header(new AboutPersonFacet(person).tag()),
+                header(h3("Games")),
                 main(new GamesPersonFacet(person.games()).tag())
         );
     }
