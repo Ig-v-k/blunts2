@@ -6,6 +6,7 @@ import com.iw.Games;
 import j2html.tags.Tag;
 import j2html.tags.specialized.DivTag;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -22,12 +23,13 @@ public final class GamesPersonFacet implements Facet<DivTag> {
     @Override
     public Tag<DivTag> tag() {
         final List<Game> list = games.list();
+        final SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
         return div(
                 each(list, (i, g) ->
                         details(
                                 summary(String.format("%s. %s - %s", i, g.title(), g.blunts())),
                                 each(g.attempts().list(), a ->
-                                        p(String.format("%s - %s", new Date(a.period()), a.blunts())))
-                        )));
+                                        p(join(dateFormat.format(new Date(a.period()* 1000L)), " - ", b(String.valueOf(a.blunts()))))))
+                        ));
     }
 }

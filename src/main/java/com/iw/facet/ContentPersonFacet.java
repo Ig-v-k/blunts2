@@ -3,11 +3,11 @@ package com.iw.facet;
 import com.iw.Facet;
 import com.iw.Person;
 import j2html.tags.Tag;
-import j2html.tags.specialized.SectionTag;
+import j2html.tags.specialized.DivTag;
 
 import static j2html.TagCreator.*;
 
-public final class ContentPersonFacet implements Facet<SectionTag> {
+public final class ContentPersonFacet implements Facet<DivTag> {
 
     private final Person person;
 
@@ -16,8 +16,8 @@ public final class ContentPersonFacet implements Facet<SectionTag> {
     }
 
     @Override
-    public Tag<SectionTag> tag() {
-        return section(
+    public Tag<DivTag> tag() {
+        return div(
                 header(new AboutPersonFacet(person).tag()),
                 main(new GamesPersonFacet(person.games()).tag())
         );
