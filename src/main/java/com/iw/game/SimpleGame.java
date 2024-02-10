@@ -50,6 +50,7 @@ public final class SimpleGame implements Game {
         final String query = String.format("SELECT title FROM game WHERE id = %s", id);
         try (final Statement st = container.conn().createStatement();
              final ResultSet rs = st.executeQuery(query)) {
+            rs.next();
             final int row = rs.getRow();
             if (row > 0) {
                 final String title = rs.getString("title");
@@ -67,9 +68,10 @@ public final class SimpleGame implements Game {
 
     @Override
     public int blunts() {
-        final String query = String.format("SELECT blunts FROM game WHERE id = %s", id);
+        final String query = String.format("SELECT SUM(blunts) FROM attempt WHERE game = %s", id);
         try (final Statement st = container.conn().createStatement();
              final ResultSet rs = st.executeQuery(query)) {
+            rs.next();
             final int row = rs.getRow();
             if (row > 0) {
                 final int blunts = rs.getInt("blunts");
