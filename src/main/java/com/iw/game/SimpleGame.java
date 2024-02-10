@@ -29,6 +29,7 @@ public final class SimpleGame implements Game {
         final String query = String.format("SELECT person FROM game WHERE id = %s", id);
         try (final Statement st = container.conn().createStatement();
              final ResultSet rs = st.executeQuery(query)) {
+            rs.next();
             final int row = rs.getRow();
             if (row > 0) {
                 final int person = rs.getInt("person");
