@@ -2,6 +2,8 @@ package com.iw.jdbc;
 
 import com.iw.JDBC;
 
+import java.util.Map;
+
 public final class EnvJDBC implements JDBC {
 
     private final String dbEnv;
@@ -20,10 +22,10 @@ public final class EnvJDBC implements JDBC {
 
     @Override
     public String url() {
-        final ProcessBuilder builder = new ProcessBuilder();
-        final String url = builder.environment().get(dbEnv);
-        final String username = builder.environment().get(usernameEnv);
-        final String password = builder.environment().get(passwordEnv);
+        final Map<String, String> env = System.getenv();
+        final String url = env.getOrDefault(dbEnv, "jdbc:postgresql://localhost:5432/postgres");
+        final String username = env.getOrDefault(usernameEnv, "postgres");
+        final String password = env.getOrDefault(passwordEnv, "postgres");
         return String.format("%s?user=%s&password=%s", url, username, password);
     }
 }
