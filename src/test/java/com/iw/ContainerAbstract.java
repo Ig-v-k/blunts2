@@ -1,6 +1,6 @@
 package com.iw;
 
-import com.iw.connection.PgContainer;
+import com.iw.container.PgContainer;
 import org.junit.Before;
 
 public class ContainerAbstract {

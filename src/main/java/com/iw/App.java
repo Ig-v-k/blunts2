@@ -1,6 +1,6 @@
 package com.iw;
 
-import com.iw.connection.PgContainer;
+import com.iw.container.PgContainer;
 import com.iw.page.HomePage;
 import com.iw.page.PersonPage;
 import com.iw.persons.ByNicknamePersons;
@@ -11,7 +11,7 @@ import io.javalin.http.staticfiles.Location;
 
 public final class App {
     public static void main(final String[] args) {
-        final Container c = new PgContainer("jdbc:postgresql://localhost:5432/postgres", "postgres", "postgres");
+        final Container c = null; // TODO: instance by dynamic jdbc type
         Javalin.create(cfg -> cfg.staticFiles.add("/assets/public", Location.CLASSPATH))
                 .get("/", ctx -> ctx.html(new HomePage(new ConstPersons(c).list()).render()))
                 .get("/{nickname}", ctx -> {
@@ -19,6 +19,14 @@ public final class App {
                     ctx.html(new PersonPage(person).render());
                 })
                 .error(HttpStatus.NOT_FOUND, ctx -> ctx.result("404. Page not found"))
-                .start(8080);
+                .start(port());
+    }
+
+    private static int port() {
+        final ProcessBuilder processBuilder = new ProcessBuilder();
+        if (processBuilder.environment().get("PORT") != null) {
+            return Integer.parseInt(processBuilder.environment().get("PORT"));
+        }
+        return 8080;
     }
 }
