@@ -17,12 +17,12 @@ public final class JDBCTest {
     @Test
     public void processBuilder() {
         final JDBC jdbc = new ProcessBuilderJDBC();
-        assertThat(jdbc.url()).isEqualTo("[database type]://[username]:[password]@[host]:[port]/[database name]?user=postgres&password=postgres");
+        assertThat(jdbc.url()).isEqualTo("jdbc:postgresql://localhost:5432/postgres?user=postgres&password=postgres");
     }
 
     @Test
     public void environment() {
         final JDBC jdbc = new EnvJDBC();
-        assertThat(jdbc.url()).isEqualTo("[database type]://[username]:[password]@[host]:[port]/[database name]?user=postgres&password=postgres");
+        assertThat(jdbc.url()).isEqualTo("jdbc:postgresql://localhost:5432/postgres?user=postgres&password=postgres");
     }
 }

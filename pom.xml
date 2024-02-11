@@ -132,22 +132,6 @@
       </plugin>
 
       <plugin>
-        <!-- Build an executable JAR -->
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <version>3.1.0</version>
-        <configuration>
-          <archive>
-            <manifest>
-              <addClasspath>true</addClasspath>
-              <classpathPrefix>lib/</classpathPrefix>
-              <mainClass>com.iw.App</mainClass>
-            </manifest>
-          </archive>
-        </configuration>
-      </plugin>
-
-      <plugin>
         <groupId>com.heroku.sdk</groupId>
         <artifactId>heroku-maven-plugin</artifactId>
         <version>3.0.3</version>
@@ -155,7 +139,7 @@
           <jdkVersion>11</jdkVersion>
           <appName>javalin-heroku-example</appName>
           <processTypes>
-            <web>java -jar ./target/blunts2.1.0-SNAPSHOT.jar</web>
+            <web>java -jar target/blunts2-1.0-SNAPSHOT-jar-with-dependencies.jar com.iw.App</web>
           </processTypes>
         </configuration>
       </plugin>

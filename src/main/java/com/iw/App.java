@@ -1,6 +1,7 @@
 package com.iw;
 
 import com.iw.container.PgContainer;
+import com.iw.jdbc.EnvJDBC;
 import com.iw.page.HomePage;
 import com.iw.page.PersonPage;
 import com.iw.persons.ByNicknamePersons;
@@ -11,7 +12,7 @@ import io.javalin.http.staticfiles.Location;
 
 public final class App {
     public static void main(final String[] args) {
-        final Container c = null; // TODO: instance by dynamic jdbc type
+        final Container c = new PgContainer(new EnvJDBC());
         Javalin.create(cfg -> cfg.staticFiles.add("/assets/public", Location.CLASSPATH))
                 .get("/", ctx -> ctx.html(new HomePage(new ConstPersons(c).list()).render()))
                 .get("/{nickname}", ctx -> {
