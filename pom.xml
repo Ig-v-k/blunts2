@@ -137,7 +137,7 @@
         <version>3.0.3</version>
         <configuration>
           <jdkVersion>11</jdkVersion>
-          <appName>javalin-heroku-example</appName>
+          <appName>blunts2</appName>
           <processTypes>
             <web>java -jar target/blunts2-1.0-SNAPSHOT-jar-with-dependencies.jar com.iw.App</web>
           </processTypes>
