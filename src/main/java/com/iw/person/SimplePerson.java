@@ -7,6 +7,7 @@ import com.iw.Person;
 import com.iw.game.SimpleGame;
 import com.iw.games.SimpleGames;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -33,7 +34,8 @@ public final class SimplePerson implements Person {
     @Override
     public int code() {
         final String query = String.format("SELECT code FROM person WHERE id = %s", id);
-        try (final Statement st = container.conn().createStatement();
+        try (final Connection conn = container.conn();
+             final Statement st = conn.createStatement();
              final ResultSet rs = st.executeQuery(query)) {
             final int row = rs.getRow();
             if (row > 0) {
@@ -53,7 +55,8 @@ public final class SimplePerson implements Person {
     @Override
     public String firstname() {
         final String query = String.format("SELECT firstname FROM person WHERE id = %s", id);
-        try (final Statement st = container.conn().createStatement();
+        try (final Connection conn = container.conn();
+             final Statement st = conn.createStatement();
              final ResultSet rs = st.executeQuery(query)) {
             final int row = rs.getRow();
             if (row > 0) {
@@ -73,7 +76,8 @@ public final class SimplePerson implements Person {
     @Override
     public String lastname() {
         final String query = String.format("SELECT lastname FROM person WHERE id = %s", id);
-        try (final Statement st = container.conn().createStatement();
+        try (final Connection conn = container.conn();
+             final Statement st = conn.createStatement();
              final ResultSet rs = st.executeQuery(query)) {
             final int row = rs.getRow();
             if (row > 0) {
@@ -102,7 +106,8 @@ public final class SimplePerson implements Person {
     @Override
     public int period() {
         final String query = String.format("SELECT period FROM person WHERE id = %s", id);
-        try (final Statement st = container.conn().createStatement();
+        try (final Connection conn = container.conn();
+             final Statement st = conn.createStatement();
              final ResultSet rs = st.executeQuery(query)) {
             final int row = rs.getRow();
             if (row > 0) {
@@ -122,7 +127,8 @@ public final class SimplePerson implements Person {
     @Override
     public String nickname() {
         final String query = String.format("SELECT nickname FROM person WHERE id = %s", id);
-        try (final Statement st = container.conn().createStatement();
+        try (final Connection conn = container.conn();
+             final Statement st = conn.createStatement();
              final ResultSet rs = st.executeQuery(query)) {
             final int row = rs.getRow();
             if (row > 0) {
@@ -142,7 +148,8 @@ public final class SimplePerson implements Person {
     @Override
     public String link() {
         final String query = String.format("SELECT link FROM person WHERE id = %s", id);
-        try (final Statement st = container.conn().createStatement();
+        try (final Connection conn = container.conn();
+             final Statement st = conn.createStatement();
              final ResultSet rs = st.executeQuery(query)) {
             final int row = rs.getRow();
             if (row > 0) {

@@ -5,4 +5,5 @@ import java.sql.SQLException;
 
 public interface Container {
     Connection conn() throws SQLException;
+    void close();
 }

@@ -1,6 +1,6 @@
 package com.iw;
 
-import com.iw.container.PgContainer;
+import com.iw.container.PGHikariSingleton;
 import com.iw.jdbc.EnvJDBC;
 import com.iw.page.HomePage;
 import com.iw.page.PersonPage;
@@ -10,17 +10,29 @@ import io.javalin.Javalin;
 import io.javalin.http.HttpStatus;
 import io.javalin.http.staticfiles.Location;
 
+import java.util.logging.Logger;
+
 public final class App {
     public static void main(final String[] args) {
-        final Container c = new PgContainer(new EnvJDBC());
-        Javalin.create(cfg -> cfg.staticFiles.add("/assets/public", Location.CLASSPATH))
+        final Logger log = Logger.getLogger("App");
+        final Container c = new PGHikariSingleton(new EnvJDBC());
+        final Javalin app = Javalin.create(cfg -> {
+                    cfg.events(ecfg -> {
+                        ecfg.serverStarting(() -> log.info("server starting"));
+                        ecfg.serverStarted(() -> log.info("server started"));
+                        ecfg.serverStopping(() -> log.info("server stopping"));
+                        ecfg.serverStopped(() -> log.info("server stopped"));
+                    });
+                    cfg.staticFiles.add("/assets/public", Location.CLASSPATH);
+                })
                 .get("/", ctx -> ctx.html(new HomePage(new ConstPersons(c).list()).render()))
                 .get("/{nickname}", ctx -> {
                     final Person person = new ByNicknamePersons(c, ctx.pathParam("nickname")).list().get(0);
                     ctx.html(new PersonPage(person).render());
                 })
-                .error(HttpStatus.NOT_FOUND, ctx -> ctx.result("404. Page not found"))
-                .start(port());
+                .error(HttpStatus.NOT_FOUND, ctx -> ctx.result("404. Page not found"));
+        Runtime.getRuntime().addShutdownHook(new Thread(app::stop));
+        app.start(port());
     }
 
     private static int port() {

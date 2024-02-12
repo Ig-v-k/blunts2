@@ -6,6 +6,7 @@ import com.iw.Container;
 import com.iw.attempt.ConstAttempt;
 import com.iw.attempt.SimpleAttempt;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -26,7 +27,8 @@ public final class ConstAttempts implements Attempts {
     public List<Attempt> list() {
         final List<Attempt> persons = new ArrayList<>();
         final String query = String.format("SELECT * FROM attempt WHERE game = %s", game);
-        try (final Statement st = container.conn().createStatement();
+        try (final Connection conn = container.conn();
+             final Statement st = conn.createStatement();
              final ResultSet rs = st.executeQuery(query)) {
             while (rs.next()) {
                 final int id = rs.getInt("id");

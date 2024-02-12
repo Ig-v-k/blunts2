@@ -30,4 +30,9 @@ public final class PgContainer implements Container {
         connection.setAutoCommit(false);
         return connection;
     }
+
+    @Override
+    public void close() {
+
+    }
 }

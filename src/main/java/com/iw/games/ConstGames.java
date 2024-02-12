@@ -7,6 +7,7 @@ import com.iw.attempts.ConstAttempts;
 import com.iw.game.ConstGame;
 import com.iw.game.SimpleGame;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -27,7 +28,8 @@ public final class ConstGames implements Games {
     public List<Game> list() {
         final List<Game> games = new ArrayList<>();
         final String query = String.format("SELECT * FROM game WHERE person = %s", id);
-        try (final Statement st = container.conn().createStatement();
+        try (final Connection conn = container.conn();
+             final Statement st = conn.createStatement();
              final ResultSet rs = st.executeQuery(query)) {
             while (rs.next()) {
                 final int id = rs.getInt("id");

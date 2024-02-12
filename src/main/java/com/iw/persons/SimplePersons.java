@@ -5,6 +5,7 @@ import com.iw.Person;
 import com.iw.Persons;
 import com.iw.person.SimplePerson;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -23,7 +24,8 @@ public final class SimplePersons implements Persons {
     public List<Person> list() {
         final List<Person> persons = new ArrayList<>();
         final String query = "SELECT * FROM person";
-        try (final Statement st = container.conn().createStatement();
+        try (final Connection conn = container.conn();
+             final Statement st = conn.createStatement();
              final ResultSet rs = st.executeQuery(query)) {
             while (rs.next()) {
                 final int id = rs.getInt("id");

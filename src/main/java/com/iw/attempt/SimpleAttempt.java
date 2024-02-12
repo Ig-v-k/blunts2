@@ -3,6 +3,7 @@ package com.iw.attempt;
 import com.iw.Attempt;
 import com.iw.Container;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -33,7 +34,8 @@ public final class SimpleAttempt implements Attempt {
     @Override
     public int period() {
         final String query = String.format("SELECT period FROM attempt WHERE id = %s", id);
-        try (final Statement st = container.conn().createStatement();
+        try (final Connection conn = container.conn();
+             final Statement st = conn.createStatement();
              final ResultSet rs = st.executeQuery(query)) {
             rs.next();
             final int row = rs.getRow();
@@ -54,7 +56,8 @@ public final class SimpleAttempt implements Attempt {
     @Override
     public int blunts() {
         final String query = String.format("SELECT blunts FROM attempt WHERE id = %s", id);
-        try (final Statement st = container.conn().createStatement();
+        try (final Connection conn = container.conn();
+             final Statement st = conn.createStatement();
              final ResultSet rs = st.executeQuery(query)) {
             rs.next();
             final int row = rs.getRow();

@@ -5,6 +5,7 @@ import com.iw.Container;
 import com.iw.Game;
 import com.iw.attempts.SimpleAttempts;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -28,7 +29,8 @@ public final class SimpleGame implements Game {
     @Override
     public int person() {
         final String query = String.format("SELECT person FROM game WHERE id = %s", id);
-        try (final Statement st = container.conn().createStatement();
+        try (final Connection conn = container.conn();
+             final Statement st = conn.createStatement();
              final ResultSet rs = st.executeQuery(query)) {
             rs.next();
             final int row = rs.getRow();
@@ -49,7 +51,8 @@ public final class SimpleGame implements Game {
     @Override
     public String title() {
         final String query = String.format("SELECT title FROM game WHERE id = %s", id);
-        try (final Statement st = container.conn().createStatement();
+        try (final Connection conn = container.conn();
+             final Statement st = conn.createStatement();
              final ResultSet rs = st.executeQuery(query)) {
             rs.next();
             final int row = rs.getRow();
@@ -70,7 +73,8 @@ public final class SimpleGame implements Game {
     @Override
     public int blunts() {
         final String query = String.format("SELECT SUM(blunts) as blunts FROM attempt WHERE game = %s", id);
-        try (final Statement st = container.conn().createStatement();
+        try (final Connection conn = container.conn();
+             final Statement st = conn.createStatement();
              final ResultSet rs = st.executeQuery(query)) {
             rs.next();
             final int row = rs.getRow();
